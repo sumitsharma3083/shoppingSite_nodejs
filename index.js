@@ -2,14 +2,15 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const app = express();
-const AdminRoute = require('./routes/admin')
-const ShopRoute  = require('./routes/shop')
-const userRoute  = require('./routes/user')
+const AdminRoute      = require('./routes/admin')
+const ShopRoute       = require('./routes/shop')
+const userRoute       = require('./routes/user')
+const authRoute     = require('./routes/auth')
 const errorController = require('./controller/shop').getErrorRoute
 
  // setting up the mongoose and models connections  
-const mongoose = require('mongoose')
-const User     = require('./model/user')
+   const mongoose = require('mongoose')
+   const User     = require('./model/user')
 
 
      app.set('view engine', 'ejs')  
@@ -30,14 +31,15 @@ const User     = require('./model/user')
       app.use(ShopRoute)
       app.use('/admin',AdminRoute)     
       app.use('/user',userRoute)
+      app.use(authRoute)
       app.use(errorController)
       
         
       
-      mongoose.connect('mongodb+srv://sumit:thisissumitpassword@cluster0-x042n.mongodb.net/shoppingsite?retryWrites=true').then((result) => {
-           console.log("Database connection successful")
-
-           User.findOne().then((result) => {
+      mongoose.connect('mongodb+srv://sumit:thisissumitpassword@cluster0-x042n.mongodb.net/shoppingsite?retryWrites=true')
+      .then((result) => {
+            console.log("Database connection successful")
+            User.findOne().then((result) => {
                  if(!result)
                  {
                   const user = new User(
@@ -52,9 +54,12 @@ const User     = require('./model/user')
                console.log(err)
            });
            app.listen(3000)
-      }).catch((err) => {     
-            console.log(err);
-      });
+          })
+      .catch((err) => {     
+            console.log(err)
+       });
+
+    
        
 
     
