@@ -5,8 +5,9 @@ const app = express();
 const AdminRoute      = require('./routes/admin')
 const ShopRoute       = require('./routes/shop')
 const userRoute       = require('./routes/user')
-const authRoute     = require('./routes/auth')
+const authRoute       = require('./routes/auth')
 const errorController = require('./controller/shop').getErrorRoute
+const session         = require('express-session')
 
  // setting up the mongoose and models connections  
    const mongoose = require('mongoose')
@@ -17,8 +18,7 @@ const errorController = require('./controller/shop').getErrorRoute
      app.set('views','views')
      app.use(bodyParser.urlencoded({extended:false}))  
      app.use(express.static(path.join(__dirname,'public')))
-      
-  
+   
        app.use((req,res,next)=>{
            User.findById('5c1a8423eb90531194e3e2c6').then((result) => {
                req.user = result
