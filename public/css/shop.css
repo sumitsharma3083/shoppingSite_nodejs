@@ -84,3 +84,19 @@ width: 100%;
     background-color: #dbc441;
     color: #fff;
 }
+
+
+
+
+.login-ul
+{
+    list-style-type: none;
+}
+.login-link
+{
+    text-decoration: none;
+    color: #000;
+}
+.login-link:hover{
+    color: #6200ff
+}

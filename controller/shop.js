@@ -2,6 +2,8 @@
    const Cart = require('../model/cart')
 
   exports.getIndexRoute = function(req,res){ 
+     
+   
         Product.find().then((result) => {
             res.render('shop/index',{products: result}) 
         }).catch((err) => {
@@ -12,6 +14,7 @@
 
 
    exports.getShopRoute =  function(req,res,next){  
+   
         Product.find().then((result) => {
             res.render('shop/shop',{products: result}) 
         }).catch((err) => {
@@ -38,8 +41,7 @@
                 res.render('shop/cart', {products: result , total: price})
               }).catch((err) => {
                   console.log(err)
-              });
-          
+              })      
     }
     
     
@@ -49,11 +51,6 @@
     exports.getErrorRoute = function(req,res,next){ 
     res.status(404).render('404')
     } 
-
-
-    
-
-
 
 
  exports.getCheckOutRoute = function(req,res){
