@@ -1,0 +1,32 @@
+
+.center
+{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    font: inherit;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 100px;
+}
+.content h1{
+    text-transform: uppercase;
+}
+.content h2{
+    text-transform: uppercase;
+}
+.content p{
+    text-transform: capitalize;
+}
+.login-ul
+{
+    list-style-type: none;
+}
+.login-link
+{
+    text-decoration: none;
+    color: #000;
+}
+.login-link:hover{
+    color: #6200ff
+}
