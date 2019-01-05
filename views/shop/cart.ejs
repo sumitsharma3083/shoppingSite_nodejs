@@ -11,23 +11,7 @@
         <link rel="stylesheet" href="css/cart.css">
     </head>
     <body>
-            <header class="main-header">
-                    <nav class="main-header_nav">
-                        <ul class="main-header_item-list">
-                            <li class="main-header_item"><a href="/" >Shop</a></li>
-                            <li class="main-header_item"><a href="/products">Products</a></li>
-                            <li class="main-header_item"><a href="/cart" class="active">Cart</a></li>
-                            <li class="main-header_item"><a href="/orders">orders</a></li>
-                            <li class="main-header_item"><a href="/admin/add-product">Add Product</a></li>
-                            <li class="main-header_item"><a href="/admin/edit-products">Admin Products</a></li>
-                        </ul>
-
-
-                        <ul class="login-ul">
-                            <li class="login-li"><a class="login-link" href="/login">Login</a></li>
-                        </ul>
-                    </nav>
-            </header>
+        <%-  include ../partial/navigation.ejs %>
                  <div class="div_payment">
                        <span>Total Payment: </span><span>$<%=total%></span>
                         <button class="proceed-btn">Proceed for Payment</button>

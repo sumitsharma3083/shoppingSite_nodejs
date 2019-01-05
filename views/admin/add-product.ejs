@@ -9,19 +9,9 @@
       <link rel="stylesheet" href="/css/product.css">
 </head>
 <body>   
-        <header class="main-header">
-                <nav class="main-header_nav">
-                    <ul class="main-header_item-list">
-                        <li class="main-header_item"><a href="/">Shop</a></li>
-                        <li class="main-header_item"><a href="/products">Products</a></li>
-                        <li class="main-header_item"><a href="/cart">Cart</a></li>
-                        <li class="main-header_item"><a href="/orders">orders</a></li>
-                        <li class="main-header_item"><a href="/admin/add-product"  class="active">Add Product</a></li>
-                        <li class="main-header_item"><a href="/admin/edit-products">Admin Products</a></li>
-                    </ul>
-                </nav>
-        </header>
+       <%-  include ../partial/navigation.ejs %>
     <main >
+         <p class="warn_msg"><%-  include ../partial/error.ejs  %></p>
          <form class="product-form" action="/admin/add-product" method="POST">
               <div class="form-control">
                  <label for="title">Title</label>

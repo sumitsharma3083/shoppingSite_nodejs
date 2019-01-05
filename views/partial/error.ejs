@@ -1,0 +1,22 @@
+<% if(typeof error != 'undefined') { %>
+    <%=  error %>
+<% } %>
+
+
+<% if(typeof errors != 'undefined') { %>
+    <%  for(var i=0 ; i<errors.length ; i++) { %>
+       <span class="error">
+           <%= errors[i].msg %>
+       </span>
+    <%  } %>    
+<% } %>
+
+<% if(err_msg  != '') { %>
+    <span class="error">
+            <%= err_msg %> 
+    </span>  
+<% } %>
+
+
+
+

@@ -7,27 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login To your Account</title>
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-        <header class="main-header">
-                <nav class="main-header_nav">
-                    <ul class="main-header_item-list">
-                        <li class="main-header_item"><a href="/shop">Shop</a></li>
-                        <li class="main-header_item"><a href="/products">Products</a></li>
-                        <li class="main-header_item"><a href="/cart">Cart</a></li> 
-                        
-                        <li class="main-header_item"><a href="/orders">orders</a></li>
-                        <li class="main-header_item"><a href="/admin/add-product">Add Product</a></li>
-                        <li class="main-header_item"><a href="/admin/edit-products">Admin Products</a></li> 
-                    </ul>
-       
-                     <ul class="main-header_item-list">
-                         <li class="main-header_item"><a href="/login" class="active">Login</a></li>
-                     </ul>
-                </nav>
-            </header>
+          <%-   include ../partial/navigation.ejs %>
         <form class="product-form" action="/login" method="POST">
             <div class="form-control">
                <label for="email">Email:</label>
@@ -42,6 +25,8 @@
                     Login
                 </button>
           </div>
+          <label>Dont have an Account ? <a href="/register" class="register_link">Register</a></label>
         </form>
+
 </body>
 </html>

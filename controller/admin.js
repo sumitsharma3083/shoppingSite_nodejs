@@ -1,10 +1,11 @@
 
  const Product = require('../model/Product')
 
-exports.getAddProductRoute = function(req,res){
 
-    res.render('admin/add-product')
- }
+
+exports.getAddProductRoute = (req,res)=>{
+       res.render('admin/add-product')
+  }
 
  
  
@@ -13,20 +14,28 @@ exports.PostAddProductRoute =  function(req,res){
         const price       = req.body.price
         const url         = req.body.url
         const description = req.body.description
-        const userid      = req.user._id
-          const product = new Product({
-                title: title,
-                price: price,
-                description: description,
-                imageUrl: url,
-                userId  : userid
-          })
 
-         product.save().then((result) => {
-                  res.redirect('/')
-         }).catch((err) => {
-                console.log(err); 
-         }); 
+
+         if(!title || !price || !url || !description)
+         {
+                res.render('admin/add-product', {
+                     error: 'Please fill all the fields'
+                })
+         }
+         else{
+              const product = new Product({
+                     title: title,
+                     price: price,
+                     description: description,
+                     imageUrl: url,
+               })
+     
+              product.save().then((result) => {
+                       res.redirect('/')
+              }).catch((err) => {
+                     console.log(err); 
+              }); 
+         }
        
 }
 
@@ -35,11 +44,11 @@ exports.PostAddProductRoute =  function(req,res){
 
 exports.getEditProductRoute = function(req,res){
    
-   Product.find().then((result) => {
-          res.render('admin/edit-product',{products: result})
-   }).catch((err) => {
-           console.log(err);     
-   });
+       Product.find().then((result) => {
+              res.render('admin/edit-product',{products: result})
+       }).catch((err) => {
+              console.log(err);     
+       });
     
 }
 

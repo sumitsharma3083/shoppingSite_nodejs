@@ -1,15 +1,21 @@
+.login_link
+{
+    text-decoration: none;
+}
+body
+{
+    font-family: sans-serif
+}
 .form-control{
     margin: 1rem 0;
  }
  .form-control label,
- .form-control input,
- .form-control textarea
+ .form-control input
  {
  display: block;
  width: 100%;
  }
- .form-control input,
- .form-control textarea
+ .form-control input
  {
      border: 1px solid #dbc441;
      font: inherit;
@@ -34,10 +40,14 @@
      width: 20rem;
      max-width: 90%;
      margin: auto;
+     margin-top: 50px;
  }
-
- .warn_msg
+ .error
  {
+     display: block;
+     background-color: #ff0000;
+     color: #fff;
      text-align: center;
-     color: red;
+     margin-bottom: 4px;
+     border-radius: 5px;
  }

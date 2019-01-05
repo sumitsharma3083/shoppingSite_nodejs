@@ -3,43 +3,43 @@ const Router = express.Router();
 const shopController = require('../controller/shop') 
 
 
-     //     /index route
+     // GET    /index route
      Router.get('/',shopController.getIndexRoute)
 
 
-     //    /shop
+     // GET         /shop
      Router.get('/shop',shopController.getShopRoute)
 
 
-     //    /products
+     // GET          /products
      Router.get('/products',shopController.getProductsRouter)
 
 
-     //     /cart        ------get request
+     // GET            /cart      
      Router.get('/cart',shopController.getCartRoute)
 
 
-     //      /cart       ------post request
+     //POST            /cart     
      Router.post('/cart',shopController.postAddtocart)
 
 
      
-         //    /checkout
+      // GET          /checkout
      Router.get('/checkout',shopController.getCheckOutRoute)
 
 
 
-       //      /orders
+       // GET     /orders
      Router.get('/orders',shopController.getOrderRoute)
 
 
 
-     //     /products/detail/ 
+     //  GET        /products/detail/ 
        Router.get('/products/detail/:productId',shopController.getDetailRoute)
 
      
   
-     //     /cart/remove-item
+     // GET          /cart/remove-item
 
      Router.post('/cart/remove-item' , shopController.removeFromCart)
 
