@@ -16,33 +16,12 @@ exports.postRegisterRoute = (req,res)=>{
    var name      = req.body.name
    var email     = req.body.email
    var password  = req.body.password
-   var password2 = req.body.password2
-   var errors = []
-       
-        if(!name || !email || !password || !password2)
-        {
-            errors.push({msg: 'Fields cant be empty'})
-        }
-        if(password != password2)
-        {
-            errors.push({msg: 'Password do not match'})
-        }
-        if(password.length < 6)
-        {
-            errors.push({msg: 'Password Length must be 6 characters'})
-        }
-       
-        if(errors.length > 0)
-        {
-            res.render('auth/register',{
-                errors
-            })   
-        }
+   var password2 = req.body.password       
+
        
           User.findOne({email: email})
           .then(user =>{
               if(user){
-                 req.flash('err_msg', 'Email is Already registered')
                  res.redirect('/register')
               }
               else{
@@ -60,4 +39,53 @@ exports.postRegisterRoute = (req,res)=>{
               }
           })
           .catch(err => {console.log(err)})
+}
+
+
+     
+exports.postLoginRoute = function(req,res){
+  
+   var email    = req.body.email
+   var password = req.body.password
+
+   User.findOne({email: email})
+   .then(user => {
+       if(!user)
+       {
+           res.redirect('/login')
+       }
+       else
+       {
+           
+         bcrypt.compare(password, user.password, function(err,isMatch){
+
+            if(err) 
+            {
+                console.log(err)
+            }
+              
+            if(!isMatch)
+            {
+                res.redirect('/login')
+            }
+            else{
+                 
+                req.session.user   = user
+                req.session.isAuthenticate = true;
+                res.redirect('/')
+            }
+
+           })
+       }    
+   })
+   .catch(err => console.log(err))
+}
+    
+
+
+
+exports.getLogoutRoute = function(req,res)
+{
+    req.session.destroy()
+    res.redirect('/')
 }

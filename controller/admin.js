@@ -4,7 +4,9 @@
 
 
 exports.getAddProductRoute = (req,res)=>{
-       res.render('admin/add-product')
+       res.render('admin/add-product', {
+              isAuthenticate:req.session.isAuthenticate
+       })
   }
 
  
@@ -45,7 +47,7 @@ exports.PostAddProductRoute =  function(req,res){
 exports.getEditProductRoute = function(req,res){
    
        Product.find().then((result) => {
-              res.render('admin/edit-product',{products: result})
+              res.render('admin/edit-product',{products: result,isAuthenticate: req.session.isAuthenticate})
        }).catch((err) => {
               console.log(err);     
        });
@@ -57,7 +59,7 @@ exports.getEditProductRoute = function(req,res){
 exports.getEditingRoute = function(req,res){
                 const id = req.params.prodId
       Product.findById(id).then((result) => {
-              res.render('admin/editing',{Product: result})
+              res.render('admin/editing',{Product: result,isAuthenticate: req.session.isAuthenticate})
       }).catch((err) => {
              console.log(err)
       });
@@ -78,9 +80,7 @@ exports.getEditingRoute = function(req,res){
                           result.description = newdescription
                           return result.save()
                             
-                 }).then(result=>{
-                         console.log("Updated Product");
-                         
+                 }).then(result=>{ 
                         res.redirect('/')
                  }).catch((err) => {
                         console.log(err)
@@ -92,8 +92,7 @@ exports.getEditingRoute = function(req,res){
 
       exports.deleteProduct = function(req,res){
            const id = req.body.id
-            Product.deleteOne({_id: id}).then((result) => {
-                    console.log("Deleted")
+            Product.deleteOne({_id: id}).then((result) => { 
                     res.redirect('/')
             }).catch((err) => {
                      console.log(err)

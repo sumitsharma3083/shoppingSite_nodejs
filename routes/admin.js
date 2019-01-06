@@ -1,9 +1,10 @@
 const express = require('express')
 const Router = express.Router();
 const adminController = require('../controller/admin');
+const islogged  = require('../util/islogged').isLogged
 
    // GET         /admin/add-product
-  Router.get('/add-product',adminController.getAddProductRoute)
+  Router.get('/add-product',islogged,adminController.getAddProductRoute)
 
 
 
@@ -12,7 +13,7 @@ const adminController = require('../controller/admin');
 
 
   //  GET           /edit-products
-  Router.get('/edit-products',adminController.getEditProductRoute)
+  Router.get('/edit-products',islogged,adminController.getEditProductRoute)
 
   
    // GET            /admin/edit-products/edit
