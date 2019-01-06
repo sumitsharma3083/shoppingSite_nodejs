@@ -36,6 +36,7 @@ body
      width: 20rem;
      max-width: 90%;
      margin: auto;
+     margin-top: 100px;
  }
 
  body
@@ -83,4 +84,12 @@ body
 {
     text-decoration: none;
 }
- 
+.error
+{
+    text-align: center;
+    background-color: rgb(37, 165, 37);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+}

@@ -1,7 +1,7 @@
 const express = require('express')
 const Router = express.Router();
 const shopController = require('../controller/shop') 
-
+const islogged    = require('../util/islogged').isLogged
 
      // GET    /index route
      Router.get('/',shopController.getIndexRoute)
@@ -16,7 +16,7 @@ const shopController = require('../controller/shop')
 
 
      // GET            /cart      
-     Router.get('/cart',shopController.getCartRoute)
+     Router.get('/cart',islogged,shopController.getCartRoute)
 
 
      //POST            /cart     
@@ -25,12 +25,12 @@ const shopController = require('../controller/shop')
 
      
       // GET          /checkout
-     Router.get('/checkout',shopController.getCheckOutRoute)
+     Router.get('/checkout',islogged,shopController.getCheckOutRoute)
 
 
 
        // GET     /orders
-     Router.get('/orders',shopController.getOrderRoute)
+     Router.get('/orders',islogged,shopController.getOrderRoute)
 
 
 
