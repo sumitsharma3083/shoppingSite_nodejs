@@ -4,14 +4,10 @@
   const Schema  = mongoose.Schema
 
    const cartSchema = new Schema({
-    id: {
-           type: String,
-           required: true
-         },
     title: {
       type : String,
       required : true
-  },
+     },
     price: {
       type: Number,
       required: true
@@ -24,8 +20,8 @@
       type: String,
       required: true
   },
-  quantity: {
-      type: Number,
+  useremail :{
+      type: String,
       required: true
   }
    })
