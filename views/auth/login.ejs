@@ -12,6 +12,7 @@
 <body>
           <%-   include ../partial/navigation.ejs %>
         <form class="product-form" action="/login" method="POST">
+            <%- include ../partial/alerts.ejs %>
             <div class="form-control">
                <label for="email">Email:</label>
                <input type="email" name="email" id="email">

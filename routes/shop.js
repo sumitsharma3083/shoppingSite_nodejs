@@ -1,10 +1,10 @@
 const express = require('express')
 const Router = express.Router();
 const shopController = require('../controller/shop') 
-const islogged    = require('../util/islogged').isLogged
+const islogged    = require('../util/islogged')
 
      // GET    /index route
-     Router.get('/',shopController.getIndexRoute)
+     Router.get('/',islogged,shopController.getIndexRoute)
 
 
      // GET         /shop

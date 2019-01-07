@@ -1,7 +1,18 @@
 const express = require('express')
 const Router = express.Router();
 const adminController = require('../controller/admin');
-const islogged  = require('../util/islogged').isLogged
+const islogged  = require('../util/islogged')
+/***
+ *  islogged = function(req,res,next)
+        {
+        if(req.session.isAuthenticate)
+        {
+            next();
+        }
+        res.redirect('/login')
+        } 
+ */
+ 
 
    // GET         /admin/add-product
   Router.get('/add-product',islogged,adminController.getAddProductRoute)
