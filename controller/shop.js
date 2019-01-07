@@ -2,11 +2,9 @@
    const Cart = require('../model/cart')
 
   exports.getIndexRoute = function(req,res){ 
-     
-          
 
         Product.find().then((result) => {
-            res.render('shop/index',{products: result, isAuthenticate: req.session.isAuthenticate}) 
+            res.render('shop/index',{products: result,isAuthenticate:req.session.isAuthenticate}) 
         }).catch((err) => {
              console.log(err)
         });  

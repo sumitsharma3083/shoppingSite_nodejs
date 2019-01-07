@@ -18,6 +18,10 @@
             <% if(typeof isAuthenticate != 'undefined') { %>
             <li class="main-header_item right"><a href="/logout">Logout</a></li>
             <%  } %>
+            
+            <% if(typeof isAuthenticate == 'undefined') { %>
+            <li class="main-header_item right"><a href="/register">Signup</a></li>
+            <% } %>
         </ul>
        
               

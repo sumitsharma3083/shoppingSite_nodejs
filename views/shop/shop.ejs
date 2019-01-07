@@ -32,9 +32,11 @@
                    <div class="card-actions">
                         <form action="/cart" method="POST">
                             <input type="hidden" name="productId" value="<%= products[i]._id %>">
+                            <% if(isAuthenticate) { %>
                             <button type="submit" class="btn">
                                     Add to cart
                             </button>
+                            <% } %>
                          </form> 
                    </div>
                </article>

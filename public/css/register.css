@@ -51,3 +51,14 @@ body
      margin-bottom: 4px;
      border-radius: 5px;
  }
+ .alert
+ {
+     border: 1px solid #E44236;
+     width: 100%;
+     box-sizing: border-box;
+     text-align: center;
+     border-radius: 3px;
+     padding: 5px 0px;
+     color: #E44236;
+     text-transform: capitalize;
+ }

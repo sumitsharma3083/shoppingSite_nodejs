@@ -34,9 +34,11 @@
                           <a href="/products/detail/<%= products[i]._id  %>" class="detail_link">Detail</a>
                           <form action="/cart" method="POST">
                             <input type="hidden" name="productId" value="<%= products[i]._id %>">
-                            <button type="submit" class="btn">
-                                    Add to cart
-                            </button>
+                            <% if(isAuthenticate) { %>
+                                <button type="submit" class="btn">
+                                        Add to cart
+                                </button>
+                                <% } %>
                          </form> 
                    </div>
                </article>

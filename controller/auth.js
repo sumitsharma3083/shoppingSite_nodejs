@@ -8,20 +8,39 @@ exports.getLoginRoute = function(req,res){
 
 
 exports.getRegisterRoute = function(req,res){
+
     res.render('auth/register')
 }
 
 
 exports.postRegisterRoute = (req,res)=>{
+
    var name      = req.body.name
    var email     = req.body.email
    var password  = req.body.password
-   var password2 = req.body.password       
+   var password2 = req.body.password2      
 
-       
+          if(!name || !email || !password || !password2)
+          {
+              console.log(typeof password,typeof password2)
+              req.flash('error_msg', 'Please fill all the fields')
+              res.redirect('/register')
+          }
+          if(password !=  password2)
+          {
+            req.flash('error_msg', 'Passwords do not Match')
+            res.redirect('/register')
+          }
+          if(password.length < 6)
+           {
+            req.flash('error_msg', 'Password Must atleast 6 characters')
+            res.redirect('/register')
+           }
+
           User.findOne({email: email})
           .then(user =>{
               if(user){
+                req.flash('error_msg', 'That Email is already register')
                  res.redirect('/register')
               }
               else{
@@ -35,6 +54,7 @@ exports.postRegisterRoute = (req,res)=>{
                       password: hash
                   })
                   newuser.save()
+                  req.flash('success_msg', 'You have successfully Registered')
                  res.redirect('/login')
               }
           })
@@ -47,12 +67,22 @@ exports.postLoginRoute = function(req,res){
   
    var email    = req.body.email
    var password = req.body.password
-
+   var loginError;
+       if(!email || !password)
+       {
+           loginError = 'Please provide Email and Password'
+           res.render('auth/login',{
+            loginerror: loginError 
+           })
+       }  
    User.findOne({email: email})
    .then(user => {
        if(!user)
        {
-           res.redirect('/login')
+           loginError = 'Please provide Correct Email'
+           res.render('auth/login',{
+               loginerror: loginError
+           })
        }
        else
        {
@@ -64,15 +94,18 @@ exports.postLoginRoute = function(req,res){
                 console.log(err)
             }
               
-            if(!isMatch)
+            if(isMatch)
             {
-                res.redirect('/login')
-            }
-            else{
-                 
-                req.session.user   = user
+
+                req.session.user = user
                 req.session.isAuthenticate = true;
                 res.redirect('/')
+            }
+            else{
+                  loginError = 'Password is Invalid'
+                res.render('auth/login',{
+                    loginerror: loginError
+                })
             }
 
            })
