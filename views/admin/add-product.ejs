@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Product</title>
+    <link rel="stylesheet" href="/css/navigate.css">
       <link rel="stylesheet" href="/css/main.css">
       <link rel="stylesheet" href="/css/product.css">
+    
 </head>
 <body>   
        <%-  include ../partial/navigation.ejs %>
     <main >
-         <form class="product-form" action="/admin/add-product" method="POST">
+         <form class="product-form" action="/admin/add-product" method="POST">     
+             <% if(typeof error == 'string') { %>            <p class="alert"><%= error %></p>   
+              <% }  %>
               <div class="form-control">
                  <label for="title">Title</label>
                  <input type="text" name="title" id="title">
@@ -35,5 +39,7 @@
              </div>
         </form>
     </main>
+    <script src="/js/effect.js">
+    </script>
 </body>
 </html>

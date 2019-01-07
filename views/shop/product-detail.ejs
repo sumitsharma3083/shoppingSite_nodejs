@@ -7,6 +7,7 @@
     <title><%= product.title  %></title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/product-detail.css">
+    <link rel="stylesheet" href="/css/navigate.css">
 </head>
 <body>
     <%-  include ../partial/navigation.ejs %>
@@ -17,5 +18,7 @@
             <h2>$<%= product.price   %></h2>
             <p><%= product.description  %></p>
         </main> 
+        <script src="/js/effect.js">
+        </script>
 </body>
 </html>

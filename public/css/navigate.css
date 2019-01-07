@@ -1,0 +1,73 @@
+.main-header_item_special
+{
+    box-sizing: border-box;
+    width: 150px;
+}
+.user_btn
+{
+    width: 100% !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 4px !important;
+    font-family: sans-serif !important;
+    font: inherit !important;
+    background: none !important;
+    cursor: pointer !important;
+}
+.user_btn:focus {outline:0;}
+.suboption
+{
+   
+   position: absolute;
+   background-color: #fff;
+   width: 200px;
+   border-radius: 10px;
+   border-left: 1px solid #dbc441;
+   border-right: 1px solid #dbc441;
+   border-bottom: 1px solid #dbc441;
+}
+#show
+{
+    opacity: 1;
+}
+#hide
+{
+    opacity: 0;
+}
+.suboption a{
+    display: block;
+    text-decoration: none;
+    margin: 10px 0px;
+    text-align: center;
+   
+}
+.order_link
+{
+ background-color: #dbc441;
+ color: #fff;
+ transition: all 0.5s;
+}
+.order_link:hover
+{
+ background-color: #8d790a;
+
+}
+.account_link
+{
+    background-color: #dbc441;
+    color: #fff;
+    transition: all 0.5s;
+}
+.account_link:hover
+{
+    background: #8d790a;
+}
+.logout_link
+{
+  background-color: #dbc441;
+  color: #fff;
+  transition: all 0.5s
+}
+.logout_link:hover{
+    background-color: #8d790a;
+}

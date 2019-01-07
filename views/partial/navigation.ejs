@@ -6,19 +6,25 @@
 
             <%  if(typeof isAuthenticate != 'undefined') { %>
             <li class="main-header_item"><a href="/cart">Cart</a></li>  
-            <li class="main-header_item"><a href="/orders">orders</a></li>
             <li class="main-header_item"><a href="/admin/add-product">Add Product</a></li>
             <li class="main-header_item"><a href="/admin/edit-products">Admin Products</a></li> 
+            <li  class="main-header_item_special">
+                <button class="user_btn">Hello user</button>
+                <div class="suboption" id="hide">
+                   <a href="/orders" class="order_link">orders</a>
+                   <a href="#" class="account_link">Your Account</a>
+                   <a href="/logout" class="logout_link">Logout</a>
+                </div>
+            </li>
+            <!-- <ul class="user_detail">
+                   
+            </ul> -->
             <% } %>
-
+             
             <% if(typeof isAuthenticate == 'undefined') { %>
             <li class="main-header_item right"><a href="/login">Login</a></li>
             <% } %>
 
-            <% if(typeof isAuthenticate != 'undefined') { %>
-            <li class="main-header_item right"><a href="/logout">Logout</a></li>
-            <%  } %>
-            
             <% if(typeof isAuthenticate == 'undefined') { %>
             <li class="main-header_item right"><a href="/register">Signup</a></li>
             <% } %>

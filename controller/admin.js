@@ -20,8 +20,10 @@ exports.PostAddProductRoute =  function(req,res){
 
          if(!title || !price || !url || !description)
          {
-                res.render('admin/add-product', {
-                     error: 'Please fill all the fields'
+
+                res.render('admin/add-product',{
+                     isAuthenticate:req.session.isAuthenticate,
+                       error: 'Please Fill all the fields'
                 })
          }
          else{
