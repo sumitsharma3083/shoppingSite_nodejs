@@ -87,11 +87,11 @@ exports.postLoginRoute = function(req,res){
        else
        {
            
-         bcrypt.compare(password, user.password, function(err,isMatch){
-
-            if(err) 
+         bcrypt.compare(password,user.password, function(err,isMatch){
+                
+            if(err)
             {
-               res.redirect('/login')
+                throw err;
             }
               
             if(isMatch)

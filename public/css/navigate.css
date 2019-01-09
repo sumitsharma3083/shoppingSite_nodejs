@@ -13,6 +13,7 @@
     font: inherit !important;
     background: none !important;
     cursor: pointer !important;
+    text-transform: capitalize;
 }
 .user_btn:focus {outline:0;}
 .suboption
