@@ -10,6 +10,7 @@ const mongoose          = require('mongoose')
 const AdminRoute        = require('./routes/admin')
 const ShopRoute         = require('./routes/shop')
 const authRoute         = require('./routes/auth')
+const AccountRoute      = require('./routes/userAccount')
 const errorController   = require('./controller/shop').getErrorRoute
 
  
@@ -46,8 +47,8 @@ const errorController   = require('./controller/shop').getErrorRoute
       app.use(ShopRoute)
       app.use('/admin',AdminRoute)     
       app.use(authRoute)
+      app.use('/account',AccountRoute)
       app.use(errorController)
-      
         
       
       mongoose.connect('mongodb+srv://sumit:sumit123@cluster0-x042n.mongodb.net/shoppingsite?retryWrites=true')

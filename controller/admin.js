@@ -5,7 +5,8 @@
 
 exports.getAddProductRoute = (req,res)=>{
        res.render('admin/add-product', {
-              isAuthenticate:req.session.isAuthenticate
+              isAuthenticate:req.session.isAuthenticate,
+              name: req.session.user.name
        })
   }
 
@@ -23,7 +24,8 @@ exports.PostAddProductRoute =  function(req,res){
 
                 res.render('admin/add-product',{
                      isAuthenticate:req.session.isAuthenticate,
-                       error: 'Please Fill all the fields'
+                       error: 'Please Fill all the fields',
+                       name: req.session.user.name
                 })
          }
          else{
@@ -49,7 +51,9 @@ exports.PostAddProductRoute =  function(req,res){
 exports.getEditProductRoute = function(req,res){
    
        Product.find().then((result) => {
-              res.render('admin/edit-product',{products: result,isAuthenticate: req.session.isAuthenticate})
+              res.render('admin/edit-product',{products: result,
+                     isAuthenticate: req.session.isAuthenticate,
+                     name: req.session.user.name})
        }).catch((err) => {
               console.log(err);     
        });
