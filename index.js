@@ -7,6 +7,7 @@ const flash             = require('connect-flash')
 const mongoose          = require('mongoose')
 
       // Accessing the Route files
+
 const AdminRoute        = require('./routes/admin')
 const ShopRoute         = require('./routes/shop')
 const authRoute         = require('./routes/auth')
@@ -40,6 +41,10 @@ const errorController   = require('./controller/shop').getErrorRoute
      app.use((req,res,next)=>{
         res.locals.error_msg = req.flash('error_msg')
         res.locals.success_msg = req.flash('success_msg')
+        res.locals.edit_msg = req.flash('edit_msg')
+        res.locals.delete_msg = req.flash('delete_msg')
+        res.locals.add_msg = req.flash('add_msg')
+        res.locals.email_change_msg = req.flash('email_change_msg')
         next()
      })
 

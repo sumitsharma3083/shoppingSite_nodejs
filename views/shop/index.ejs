@@ -11,9 +11,11 @@
 <body>
          <%-   include ../partial/navigation.ejs %>
 
-     <main>
+     <main>  
+            <%-   include ../partial/alerts.ejs %> 
             <% if(products.length> 0) { %>     
               <div class="grid">
+                   
                     <% for(var i=0 ; i<products.length ; i++) { %>
                <article class="card product-item">
                    <header class="card-header">

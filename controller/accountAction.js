@@ -19,11 +19,11 @@ exports.postChangePasswordAction = function(req,res){
 
       if(newpassword != newpassword2)
       {
-            res.redirect('/account/personal')
+            res.render('userAccount/personalinfo.ejs')
       }
       if(newpassword.length < 6)
       {
-            res.redirect('/account/personal')
+            res.render('userAccount/personalinfo.ejs')
       }
 
      User.findOne({email : req.session.user.email})
@@ -37,7 +37,6 @@ exports.postChangePasswordAction = function(req,res){
                         user.password  = hash
                         user.save()
                         .then(result => { 
-                                    console.log("Password changed")
                                     res.redirect('/account/personal')
                         })
                         .catch(err => console.log(err))
@@ -61,8 +60,14 @@ exports.postChangeEmailAction = function(req,res){
       .then(user => {
           user.email = email
           user.save()
-          req.session.destroy()
+          req.flash('email_change_msg', 'Email is successfully changed')
+          req.session.destroy() 
           res.redirect('/login')
       })
       .catch(err => console.log(err))  
+}
+
+exports.getOrder  = function(req,res)
+{
+     res.send('This is your order page')
 }

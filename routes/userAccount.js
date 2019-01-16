@@ -9,7 +9,7 @@ const islogged  = require('../util/islogged')
 Router.get('/personal',islogged,accountController.getPersonalview)
 Router.post('/changepassword',accountController.postChangePasswordAction)
 Router.post('/changeemail',accountController.postChangeEmailAction)
-
+Router.get('/orders', accountController.getOrder)
 
 
 module.exports = Router

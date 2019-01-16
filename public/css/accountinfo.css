@@ -156,3 +156,28 @@ body{
 #cross_btn:active{
     outline: none;
 }
+
+.error_msg
+{
+    border: 1px solid #e92a19;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px 0px;
+    color: #e92a19;
+    text-transform: capitalize;
+    width: 50%;
+    margin: auto;
+}
+.alert
+ {
+     border: 1px solid #E44236;
+     width: 100%;
+     box-sizing: border-box;
+     text-align: center;
+     border-radius: 3px;
+     padding: 5px 0px;
+     color: #E44236;
+     text-transform: capitalize;
+ }

@@ -1,6 +1,6 @@
 
  const Product = require('../model/Product')
-
+ const User    = require('../model/user')
 
 
 exports.getAddProductRoute = (req,res)=>{
@@ -10,9 +10,9 @@ exports.getAddProductRoute = (req,res)=>{
        })
   }
 
+  
  
- 
-exports.PostAddProductRoute =  function(req,res){
+ exports.PostAddProductRoute =  function(req,res){
         const title       = req.body.title
         const price       = req.body.price
         const url         = req.body.url
@@ -34,15 +34,16 @@ exports.PostAddProductRoute =  function(req,res){
                      price: price,
                      description: description,
                      imageUrl: url,
+                     userId: req.session.user
                })
      
               product.save().then((result) => {
+                       req.flash('add_msg', 'Product Add Successfully')
                        res.redirect('/')
               }).catch((err) => {
                      console.log(err); 
               }); 
-         }
-       
+         }    
 }
 
 
@@ -86,7 +87,8 @@ exports.getEditingRoute = function(req,res){
                           result.description = newdescription
                           return result.save()
                             
-                 }).then(result=>{ 
+                 }).then(result=>{
+                        req.flash('edit_msg' ,'Product is successfully edit') 
                         res.redirect('/')
                  }).catch((err) => {
                         console.log(err)
@@ -98,9 +100,16 @@ exports.getEditingRoute = function(req,res){
 
       exports.deleteProduct = function(req,res){
            const id = req.body.id
+
             Product.deleteOne({_id: id}).then((result) => { 
+                    req.flash('delete_msg', 'Product Delete successfully')
                     res.redirect('/')
             }).catch((err) => {
                      console.log(err)
             });
+               
           }
+
+
+
+        

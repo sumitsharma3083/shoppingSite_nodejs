@@ -1,7 +1,9 @@
 
-const bcrypt =  require('bcryptjs')
-const User   =  require('../model/user')
- 
+const bcrypt     =  require('bcryptjs')
+const User       =  require('../model/user')
+const nodemailer = require('nodemailer')
+const crypto     = require('crypto')
+
 exports.getLoginRoute = function(req,res){
     res.render('auth/login')
 }
@@ -99,7 +101,10 @@ exports.postLoginRoute = function(req,res){
 
                 req.session.user = user
                 req.session.isAuthenticate = true;
-                res.redirect('/')
+
+                 res.redirect('/')
+    
+               
             }
             else{
                   loginError = 'Password is Invalid'
@@ -122,3 +127,65 @@ exports.getLogoutRoute = function(req,res)
     req.session.destroy()
     res.redirect('/')
 }
+
+
+
+
+exports.getResetRoute = function(req,res)
+{
+    res.render('auth/reset')
+}
+
+
+
+
+exports.postResetRoute = function(req,res)
+{
+   var email = req.body.email
+    
+      crypto.randomBytes(10, (err, buffer) => {
+          if(err)
+          {
+              console.log(err)
+          }
+
+          var token = buffer.toString('hex')
+
+          User.findOne({email: email})
+          .then(user => {
+              if(!user)
+              {   req.flash('error_msg', 'Email is Invalid')
+                  res.redirect('/reset')
+              }
+     
+               var transporter = nodemailer.createTransport({
+                   service: 'gmail',
+                   auth: {
+                       user: 'contact.webtech95@gmail.com',
+                       pass: 8950094098
+                   }
+               })
+                
+               transporter.sendMail({
+                  from: 'Shopping site <contact.webtech95@gmail.com>',
+                  to: email,
+                  subject: 'Change Your Password',
+                  text: 'You can change your password',
+                  html: `
+                      <p>Click This <a href="http://localhost:3000/resetpassword/${token}">Link</a> to change the password</p>
+                  `
+               })
+                 
+                 res.redirect('/shop')
+          })
+     
+          .catch(err => console.log(err))
+
+      })   
+}
+
+
+exports.getChangePassword = (req,res,next) => {
+    var token = req.params.token
+    console.log(token)
+} 
