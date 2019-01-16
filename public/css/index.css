@@ -102,3 +102,44 @@ body
 {
     text-align: center
 }
+.success_edit
+{
+    border: 1px solid #1d904f;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px 0px;
+    color: #1d904f;
+    text-transform: capitalize;
+    width: 50%;
+    margin: auto;
+
+}
+.success_delete
+{
+    border: 1px solid #e92a19;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px 0px;
+    color: #e92a19;
+    text-transform: capitalize;
+    width: 50%;
+    margin: auto;
+}
+
+.success_add
+{
+    border: 1px solid #192A56;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px 0px;
+    color: #192A56;
+    text-transform: capitalize;
+    width: 50%;
+    margin: auto;   
+}

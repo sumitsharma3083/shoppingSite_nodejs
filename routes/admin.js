@@ -28,7 +28,7 @@ const islogged  = require('../util/islogged')
 
   
    // GET            /admin/edit-products/edit
-  Router.get('/edit-products/edit/:prodId',adminController.getEditingRoute)
+  Router.get('/edit-products/edit/:prodId',islogged,adminController.getEditingRoute)
   
 
 

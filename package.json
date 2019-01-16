@@ -18,6 +18,8 @@
     "express-session": "^1.15.6",
     "mongodb": "^3.1.10",
     "mongoose": "^5.4.0",
-    "mysql2": "^1.6.4"
+    "mysql2": "^1.6.4",
+    "nodemailer": "^5.0.1",
+    "nodemailer-sendgrid-transport": "^0.2.0"
   }
 }

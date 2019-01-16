@@ -115,3 +115,9 @@ body
      color: #E44236;
      text-transform: capitalize;
  }
+ .centered
+{
+    text-align: center;
+    padding: 10px 0px;
+    margin-bottom: 40px;
+}

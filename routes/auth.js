@@ -21,4 +21,14 @@ Router.post('/register', authController.postRegisterRoute)
 //GET      /logout
 Router.get('/logout', authController.getLogoutRoute)
 
+Router.get('/reset', authController.getResetRoute)
+
+Router.post('/reset', authController.postResetRoute)
+
+// Router.post('/resetpassword', authController.postPasswordChange)
+
+Router.get('/resetpassword/token', authController.getChangePassword)
+
+
+
 module.exports = Router

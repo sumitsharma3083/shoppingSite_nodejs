@@ -12,9 +12,14 @@ const Schema   = mongoose.Schema
            type: String,
            required: true
        },
+       resetToken: String,
+       resetTokenExpiration: Date,
        password: {
            type: String,
            required: true
+       },
+       cart : {
+           type: Array
        }
  })
  module.exports = mongoose.model('users', userSchema)
