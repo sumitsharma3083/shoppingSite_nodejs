@@ -21,7 +21,7 @@
                      <% for(var i=0 ; i<products.length ; i++){  %>
                      <article>   
                            <div class="product-image">
-                               <img src=<%= products[i].imageUrl  %> alt="<%=  products[i].title  %>">
+                               <img src="/images/<%= products[i].imageUrl %>" >
                            </div>
                            <div class="product-header">
                                 <h1><%= products[i].title  %></h1>

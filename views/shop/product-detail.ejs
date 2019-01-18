@@ -14,7 +14,7 @@
         <main class="center">
             <h1><%=  product.title  %></h1>
             <hr>
-            <img src="<%=  product.imageUrl  %>" alt= <%=  product.title  %>>
+            <img src="/images/<%= product.imgPath %>" alt="myimage">
             <h2>$<%= product.price   %></h2>
             <p><%= product.description  %></p>
         </main> 

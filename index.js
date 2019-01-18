@@ -6,15 +6,32 @@ const SessionStore      = require('connect-mongodb-session')(session)
 const flash             = require('connect-flash')
 const mongoose          = require('mongoose')
 
-      // Accessing the Route files
 
+
+      // Accessing the Route files
 const AdminRoute        = require('./routes/admin')
 const ShopRoute         = require('./routes/shop')
 const authRoute         = require('./routes/auth')
 const AccountRoute      = require('./routes/userAccount')
 const errorController   = require('./controller/shop').getErrorRoute
-
+const multer            = require('multer')
  
+
+const storage = multer.diskStorage({
+      destination: './public/images',
+      filename : function(req,file,cb){
+            cb(null, file.fieldname+"-"+Date.now()+path.extname(file.originalname))
+      }
+})
+const fileFilter = function(req,file,cb){
+      if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png')
+      {
+            cb(null,true)
+      }
+      else{
+            cb(null,false)
+      }     
+}
       //init express
       const app    = express();
 
@@ -24,10 +41,12 @@ const errorController   = require('./controller/shop').getErrorRoute
      })
  
 
+
      // set up the middleware
      app.set('view engine', 'ejs')  
      app.set('views','views')
-     app.use(bodyParser.urlencoded({extended:false}))  
+     app.use(bodyParser.urlencoded({extended: true})) 
+     app.use(multer({storage: storage, fileFilter: fileFilter}).single('image'))
      app.use(express.static(path.join(__dirname,'public')))
 
      app.use(session({
@@ -55,7 +74,6 @@ const errorController   = require('./controller/shop').getErrorRoute
       app.use('/account',AccountRoute)
       app.use(errorController)
         
-      
       mongoose.connect('mongodb+srv://sumit:sumit123@cluster0-x042n.mongodb.net/shoppingsite?retryWrites=true')
       .then((result) => {
             console.log("Database connection successful")
