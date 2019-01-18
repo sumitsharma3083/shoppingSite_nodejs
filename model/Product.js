@@ -18,7 +18,7 @@ const mongoose = require('mongoose')
             type: String,
             required: true
         },
-        imageUrl: {
+        imgPath: {
             type: String,
             required: true
         },

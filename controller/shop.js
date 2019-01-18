@@ -91,7 +91,7 @@
                                 id: product._id,
                                 title: product.title,
                                 price: product.price,
-                                imageUrl: product.imageUrl,
+                                imageUrl: product.imgPath,
                                 description: product.description,
                                 quantity : 1
                             }
@@ -113,7 +113,7 @@
                             id: product._id,
                             title: product.title,
                             price: product.price,
-                            imageUrl: product.imageUrl,
+                            imageUrl: product.imgPath,
                             description: product.description,
                             quantity : 1
                         }  
@@ -158,35 +158,8 @@
                    
             })
             .catch(err => console.log(err))
-             
-
-
-
-
-
-
-
-
         }
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
      // Error action
     exports.getErrorRoute = function(req,res,next)
     { 
@@ -216,7 +189,8 @@
         typeof req.session.user != 'undefined'
         ?
             Product.findById(ProdId).then((result) => {
-                res.render('shop/product-detail', {product: result,
+                res.render('shop/product-detail', {
+                    product: result,
                     isAuthenticate: req.session.isAuthenticate,
                     name: req.session.user.name
                 })
@@ -225,7 +199,8 @@
             }) 
         :
         Product.findById(ProdId).then((result) => {
-            res.render('shop/product-detail', {product: result,
+            res.render('shop/product-detail', {
+                product: result,
                 isAuthenticate: req.session.isAuthenticate   
             })
         }).catch((err) => {

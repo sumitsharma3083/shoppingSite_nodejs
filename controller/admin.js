@@ -1,7 +1,7 @@
 
  const Product = require('../model/Product')
  const User    = require('../model/user')
-
+  
 
 exports.getAddProductRoute = (req,res)=>{
        res.render('admin/add-product', {
@@ -13,13 +13,16 @@ exports.getAddProductRoute = (req,res)=>{
   
  
  exports.PostAddProductRoute =  function(req,res){
+       
+     
         const title       = req.body.title
         const price       = req.body.price
-        const url         = req.body.url
         const description = req.body.description
-
-
-         if(!title || !price || !url || !description)
+        const imageInfo   = req.file
+         
+       console.log(imageInfo);
+       
+         if(!title || !price || !description || !imageInfo)
          {
 
                 res.render('admin/add-product',{
@@ -29,11 +32,12 @@ exports.getAddProductRoute = (req,res)=>{
                 })
          }
          else{
+
               const product = new Product({
                      title: title,
                      price: price,
                      description: description,
-                     imageUrl: url,
+                     imgPath: imageInfo.filename,
                      userId: req.session.user
                })
      

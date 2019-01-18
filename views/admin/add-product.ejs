@@ -13,8 +13,9 @@
 <body>   
        <%-  include ../partial/navigation.ejs %>
     <main >
-         <form class="product-form" action="/admin/add-product" method="POST">     
-             <% if(typeof error == 'string') { %>            <p class="alert"><%= error %></p>   
+         <form class="product-form" action="/admin/add-product" method="POST" enctype="multipart/form-data">  
+             <% if(typeof error == 'string') { %>  
+                 <p class="alert"><%= error %></p>   
               <% }  %>
               <div class="form-control">
                  <label for="title">Title</label>
@@ -25,13 +26,13 @@
                 <input type="text" name="price" id="price">
              </div>
              <div class="form-control">
-                <label for="imgurl">Url</label>
-                <input type="text" name="url" id="url">
-             </div>
-             <div class="form-control">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" cols="30" rows="5"></textarea>
              </div> 
+             <div class="form-control">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image">
+             </div>
              <div class="form-control">
                  <button type="submit">
                      Add Product
