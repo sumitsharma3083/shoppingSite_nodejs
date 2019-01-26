@@ -21,7 +21,7 @@ body
      font: inherit;
      border-radius: 2px;
  }
- button{
+ .form-control button{
       font: inherit;
       border: 1px solid #6200ff;
       color: #6200ff;
@@ -30,8 +30,8 @@ body
       cursor: pointer;
       margin-top: 1rem;
  }
- button:hover,
- button:active{  
+ .form-control button:hover,
+ .form-control button:active{  
         background-color: #6200ff;
         color: #fff;
  }

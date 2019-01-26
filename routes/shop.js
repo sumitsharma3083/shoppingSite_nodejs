@@ -13,35 +13,11 @@ const islogged    = require('../util/islogged')
 
      // GET          /products
      Router.get('/products',shopController.getProductsRouter)
-
-
-     // GET            /cart      
-     Router.get('/cart',islogged,shopController.getCartRoute)
-
-
-     //POST            /cart     
-     Router.post('/cart',shopController.postAddtocart)
-
-
      
-      // GET          /checkout
-     Router.get('/checkout',islogged,shopController.getCheckOutRoute)
-
-
-
-       // GET     /orders
-     Router.get('/orders',islogged,shopController.getOrderRoute)
-
-
 
      //  GET        /products/detail/ 
        Router.get('/products/detail/:productId',shopController.getDetailRoute)
 
-     
-  
-     // GET          /cart/remove-item
-
-     Router.post('/cart/remove-item' , shopController.removeFromCart)
-
+    
 
      module.exports = Router

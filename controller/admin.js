@@ -8,24 +8,21 @@ exports.getAddProductRoute = (req,res)=>{
               isAuthenticate:req.session.isAuthenticate,
               name: req.session.user.name
        })
-  }
+}
 
   
  
  exports.PostAddProductRoute =  function(req,res){
        
-     
-        const title       = req.body.title
-        const price       = req.body.price
+        const title    = req.body.title
+        const price    = req.body.price
         const description = req.body.description
         const imageInfo   = req.file
-         
-       console.log(imageInfo);
+       
        
          if(!title || !price || !description || !imageInfo)
          {
-
-                res.render('admin/add-product',{
+           res.render('admin/add-product',{
                      isAuthenticate:req.session.isAuthenticate,
                        error: 'Please Fill all the fields',
                        name: req.session.user.name
@@ -41,18 +38,15 @@ exports.getAddProductRoute = (req,res)=>{
                      userId: req.session.user
                })
      
-              product.save().then((result) => {
-                       req.flash('add_msg', 'Product Add Successfully')
+   product.save().then((result) => {
+   req.flash('add_msg', 'Product Add Successfully')
                        res.redirect('/')
               }).catch((err) => {
                      console.log(err); 
               }); 
          }    
 }
-
-
-
-
+ 
 exports.getEditProductRoute = function(req,res){
    
        Product.find().then((result) => {
@@ -65,8 +59,6 @@ exports.getEditProductRoute = function(req,res){
     
 }
 
-
-
 exports.getEditingRoute = function(req,res){
                 const id = req.params.prodId
       Product.findById(id).then((result) => {
@@ -77,20 +69,17 @@ exports.getEditingRoute = function(req,res){
      }
 
 
+ exports.editdone = function(req,res){  
+       const id             = req.body.getId
+       const newtitle       = req.body.title
+       const newprice       = req.body.price
+       const newdescription = req.body.description
 
-
-       exports.editdone = function(req,res){  
-              const id             = req.body.getId
-              const newtitle       = req.body.title
-              const newprice       = req.body.price
-              const newdescription = req.body.description
-
-                 Product.findById(id).then((result) => {
-                          result.title       = newtitle
-                          result.price       = newprice
-                          result.description = newdescription
-                          return result.save()
-                            
+         Product.findById(id).then((result) => {
+                      result.title       = newtitle
+                      result.price       = newprice
+                      result.description = newdescription
+                      return result.save()          
                  }).then(result=>{
                         req.flash('edit_msg' ,'Product is successfully edit') 
                         res.redirect('/')
@@ -111,6 +100,23 @@ exports.getEditingRoute = function(req,res){
             }).catch((err) => {
                      console.log(err)
             });
+
+   
+                User.findOne({email: req.session.user.email})
+                .then(user =>{
+                     var allproducts = user.cart
+
+         var getindex = allproducts.findIndex(product =>{
+
+                 return product.id.toString() == id.toString()        
+         })    
+               allproducts.splice(getindex,1)
+                   user.cart = allproducts 
+                   user.save()
+                })
+                .catch(err => console.log(err))
+
+            
                
           }
 

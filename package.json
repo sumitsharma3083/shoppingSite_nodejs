@@ -21,6 +21,7 @@
     "multer": "^1.4.1",
     "mysql2": "^1.6.4",
     "nodemailer": "^5.0.1",
-    "nodemailer-sendgrid-transport": "^0.2.0"
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemon": "^1.18.9"
   }
 }

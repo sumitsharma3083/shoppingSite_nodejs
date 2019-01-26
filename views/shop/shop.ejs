@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shop Here</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/hamburg.css">
     <link rel="stylesheet" href="/css/shop.css">
     <link rel="stylesheet" href="/css/navigate.css">
 </head>
@@ -16,12 +18,12 @@
               <div class="grid">
                     <% for(var i=0 ; i<products.length ; i++) { %>
                <article class="card product-item">
-                   <header class="card-header">
-                       <h1 class="product-title"> <%= products[i].title %></h1>
-                   </header>
                    <div class="card-image">
                        <img src="images/<%= products[i].imgPath %>" alt="myimage">
                    </div>
+                   <header class="card-header">
+                    <h1 class="product-title"> <%= products[i].title %></h1>
+                    </header>
                    <div class="card-content">
                        <h2 class="product-price">
                            $<%= products[i].price  %>
@@ -29,16 +31,6 @@
                        <p class="product-description">
                             <%= products[i].description  %>
                        </p>
-                   </div>
-                   <div class="card-actions">
-                        <form action="/cart" method="POST">
-                            <input type="hidden" name="productId" value="<%= products[i]._id %>">
-                            <% if(isAuthenticate) { %>
-                            <button type="submit" class="btn">
-                                    Add to cart
-                            </button>
-                            <% } %>
-                         </form> 
                    </div>
                </article>
                <% } %>

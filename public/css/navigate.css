@@ -26,14 +26,25 @@
    border-left: 1px solid #dbc441;
    border-right: 1px solid #dbc441;
    border-bottom: 1px solid #dbc441;
+   margin-top: 8px;
 }
+.arrow{
+    position: relative;
+    bottom: 5px;
+    height: 10px;
+    width: 10px;
+    background-color: #fff;
+    margin: auto;
+    transform: rotate(41deg);  
+ }
+
 #show
 {
-    opacity: 1;
+    display: block;
 }
 #hide
 {
-    opacity: 0;
+   display: none;
 }
 .suboption a{
     display: block;

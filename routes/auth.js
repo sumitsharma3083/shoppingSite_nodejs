@@ -3,17 +3,17 @@ const Router = express.Router();
 
 const authController = require('../controller/auth')
 
-//GET      /login
+//GET     /login
 Router.get('/login',authController.getLoginRoute)
 
-// POST    /login
+// POST   /login
 Router.post('/login', authController.postLoginRoute)
 
-//GET     /register
+//GET    /register
 Router.get('/register',authController.getRegisterRoute)
 
 
-//POST    /register
+//POST  /register
 
 Router.post('/register', authController.postRegisterRoute)
 
@@ -21,13 +21,13 @@ Router.post('/register', authController.postRegisterRoute)
 //GET      /logout
 Router.get('/logout', authController.getLogoutRoute)
 
-Router.get('/reset', authController.getResetRoute)
 
-Router.post('/reset', authController.postResetRoute)
+Router.get('/reset',authController.getResetRoute)
 
-// Router.post('/resetpassword', authController.postPasswordChange)
+Router.post('/reset',authController.postResetRoute)
 
-Router.get('/resetpassword/token', authController.getChangePassword)
+Router.get('/reset/:token',authController.getResetPassRoute)
+Router.post('/changePassword',authController.postChangePass)
 
 
 

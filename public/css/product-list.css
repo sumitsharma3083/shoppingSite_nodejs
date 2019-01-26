@@ -32,6 +32,15 @@
 
 width: 100%;
 }
+.card-image{
+border-bottom: 1px solid #000;
+}
+.product-title{
+text-transform: capitalize;
+}
+.product-description{
+text-transform: capitalize;
+}
 .btn
 {
     border-radius: 3px;
@@ -77,4 +86,18 @@ width: 100%;
 .center
 {
     text-align: center
+}
+
+@media(max-width: 600px){
+    .grid
+    {
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    } 
+    .product-item{
+        margin-top: 20px;
+    } 
+
 }
