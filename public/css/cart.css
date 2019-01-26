@@ -38,6 +38,19 @@ article
     color: #fff;
     background-color: #e71c23;
 }
+.checkout-segment
+{
+    border: 1px solid #019031;
+    color: #019031;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.checkout-segment:hover{
+    color: #fff;
+    background-color: #019031;
+}
 .div_payment
 {
    height: 50px;

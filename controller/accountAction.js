@@ -66,8 +66,3 @@ exports.postChangeEmailAction = function(req,res){
       })
       .catch(err => console.log(err))  
 }
-
-exports.getOrder  = function(req,res)
-{
-     res.send('This is your order page')
-}

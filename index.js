@@ -9,19 +9,21 @@ const mongoose          = require('mongoose')
 
 
       // Accessing the Route files
-const AdminRoute        = require('./routes/admin')
-const ShopRoute         = require('./routes/shop')
-const authRoute         = require('./routes/auth')
-const AccountRoute      = require('./routes/userAccount')
-const errorController   = require('./controller/shop').getErrorRoute
-const multer            = require('multer')
+      const ShopRoute         = require('./routes/shop')
+      const AdminRoute        = require('./routes/admin')
+      const authRoute         = require('./routes/auth')
+      const AccountRoute      = require('./routes/userAccount')
+      const errorController   = require('./controller/shop').getErrorRoute
+      const multer            = require('multer')
  
 
 const storage = multer.diskStorage({
+
       destination: './public/images',
       filename : function(req,file,cb){
             cb(null, file.fieldname+"-"+Date.now()+path.extname(file.originalname))
       }
+
 })
 const fileFilter = function(req,file,cb){
       if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png')
@@ -35,12 +37,11 @@ const fileFilter = function(req,file,cb){
       //init express
       const app    = express();
 
+
      const Store   = new SessionStore({
            uri: 'mongodb+srv://sumit:sumit123@cluster0-x042n.mongodb.net/shoppingsite',
            collection : 'session'
      })
- 
-
 
      // set up the middleware
      app.set('view engine', 'ejs')  
@@ -68,11 +69,12 @@ const fileFilter = function(req,file,cb){
      })
 
         // Routes Middleware
-      app.use(ShopRoute)
-      app.use('/admin',AdminRoute)     
-      app.use(authRoute)
-      app.use('/account',AccountRoute)
-      app.use(errorController)
+
+        app.use(ShopRoute)
+        app.use('/admin',AdminRoute)   
+        app.use(authRoute)
+        app.use('/account',AccountRoute)
+        app.use(errorController)
         
       mongoose.connect('mongodb+srv://sumit:sumit123@cluster0-x042n.mongodb.net/shoppingsite?retryWrites=true')
       .then((result) => {
@@ -82,8 +84,4 @@ const fileFilter = function(req,file,cb){
       .catch((err) => {     
             console.log(err)
        });
-
-    
-       
-
     
