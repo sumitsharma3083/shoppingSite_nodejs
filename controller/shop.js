@@ -1,5 +1,6 @@
    const Product = require('../model/Product')
    const User    = require('../model/user')
+   const Cart    = require('../model/Cart')
 
       // Index action
   exports.getIndexRoute = function(req,res){ 
@@ -81,7 +82,43 @@
 
             
     }
+
+
+    // Add to cart action
+    exports.addcartRoute = function(req,res){
+      const productid = req.params.productid
+      const useremail = req.session.user.email
+      
+       Cart.findOne({productid : productid , useremail : useremail})
+       .then(result => {
+             if(!result){
+                const cart = new Cart({
+                      productid : productid,
+                      useremail : useremail,
+                      quantity  : 1
+                })
+               cart.save();
+               res.redirect('/shop')
+             }
+             else{
+                 result.quantity += 1;
+                 result.save();
+                 res.redirect('/shop')
+             }
+       })
+       .catch(err => {
+           console.log(err)
+       })
+    }
  
+    // cart action
+    exports.getcartRoute = function(req,res){
+       
+    //    TODO: Remaining to write this logic
+    }
+
+
+
      // Error action
      exports.getErrorRoute = function(req,res,next)
      { 

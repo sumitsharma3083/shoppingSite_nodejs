@@ -39,6 +39,9 @@ body
 {
    color: #6200ff;
 }
+article{
+    padding-bottom: 10px;
+}
 .grid
 {
     width: 60%;
@@ -67,10 +70,17 @@ body
 {
     background-color: #eee;
 }
+.cart_link{
+    text-decoration: none;
+    color: #dbc441;
+    border: 1px solid #dbc441;
+    padding : 3px 7px;
+    border-radius: 4px;
+}
 .card-image,
 .card-image img
 {
-
+height : 200px;
 width: 100%;
 }
 .card-image{

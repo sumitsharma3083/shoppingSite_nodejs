@@ -24,9 +24,12 @@ Router.get('/logout', authController.getLogoutRoute)
 
 Router.get('/reset',authController.getResetRoute)
 
+
 Router.post('/reset',authController.postResetRoute)
 
 Router.get('/reset/:token',authController.getResetPassRoute)
+
+
 Router.post('/changePassword',authController.postChangePass)
 
 

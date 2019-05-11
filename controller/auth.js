@@ -10,6 +10,8 @@ exports.getLoginRoute = function(req,res){
 exports.getRegisterRoute = function(req,res){
     res.render('auth/register')
 }
+
+
 exports.postRegisterRoute = (req,res)=>{
    var name      = req.body.name
    var email     = req.body.email
@@ -53,7 +55,9 @@ exports.postRegisterRoute = (req,res)=>{
               }
           })
           .catch(err => {console.log(err)})
-}   
+}  
+
+
 exports.postLoginRoute = function(req,res){
    var email    = req.body.email
    var password = req.body.password
@@ -85,7 +89,8 @@ exports.postLoginRoute = function(req,res){
         if(isMatch)
         {
             req.session.user = user
-            req.session.isAuthenticate = true;res.redirect('/')     
+            req.session.isAuthenticate = true;
+            res.redirect('/')     
         }
         else{
          loginError = 'Password is Invalid'
@@ -98,31 +103,40 @@ exports.postLoginRoute = function(req,res){
    })
    .catch(err => console.log(err))
 }
+
+
 exports.getLogoutRoute = function(req,res)
 {
     req.session.destroy();
     res.redirect('/login')
 }
+
+
+
 exports.getResetRoute = function(req,res,next){
     res.render('auth/reset', {
         isAuthenticate: req.session.isAuthenticate,
     })
 }
+
+
 exports.postResetRoute = function(req,res,next)
 {
     var email = req.body.email
+
         if(!email)
         {
             req.flash('error_msg', 'Please Provide Email')
             res.redirect('/reset')
         }
 
+
         User.findOne({email: email})
         .then(user => {
             if(!user)
             {   
               req.flash('error_msg', 'Wrong Email')  
-               res.redirect('/reset')
+              res.redirect('/reset')
             }
             else{
                  crypto.randomBytes(10,(err,buffer)=>{
@@ -132,7 +146,7 @@ exports.postResetRoute = function(req,res,next)
                            console.log(err)
                        }
 
-                       var token = buffer.toString('hex')
+                      var token = buffer.toString('hex')
                       user.resetToken = token
                       user.save();
 
@@ -143,18 +157,27 @@ exports.postResetRoute = function(req,res,next)
                               pass: 8950094098
                           }
                       })
-   
-                       transporter.sendMail({
-                           from: 'Shopping site <contact.webtech95@gmail.com>',
-                           to: email,
-                           subject: 'Change Your password', 
-                           html: `
-                             <p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to change your password</p>
-                           ` 
-                       })
-                      req.flash('error_msg', 'We sent You a mail to change the password')
 
-                      res.redirect('/login')
+                      var mailoption = {
+                          from : 'Shopping site <contact.webtech95@gmail.com>',
+                          to : 'prince.sumit95@gmail.com',
+                          subject : 'change Your password',
+                          html: `
+                          <p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to change your password</p>
+                        ` 
+                      }
+   
+                       transporter.sendMail(mailoption, (err, info)=>{
+                           if(err){
+                               console.log(err)
+                           }
+                           else{
+                               console.log(info)
+                            req.flash('error_msg', 'We sent You a mail to change the password')
+                            res.redirect('/login')
+                           }
+                       })
+                    
                  })       
             }      
         })

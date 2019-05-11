@@ -18,15 +18,15 @@ const mongoose = require('mongoose')
             type: String,
             required: true
         },
-        imgPath: {
+        imgname: {
             type: String,
-            required: true
+            required : true
         },
         userId : {
             type: Schema.Types.ObjectId,
             ref : 'users',
             required : true
-        }  
+        }
     })
 
 

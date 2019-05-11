@@ -19,5 +19,11 @@ const islogged    = require('../util/islogged')
        Router.get('/products/detail/:productId',shopController.getDetailRoute)
 
     
+    
+       Router.get('/add-to-cart/:productid', shopController.addcartRoute)
+
+
+       Router.get('/cart', shopController.getcartRoute)
+       
 
      module.exports = Router

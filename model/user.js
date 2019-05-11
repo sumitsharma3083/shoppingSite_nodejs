@@ -12,17 +12,11 @@ const userSchema =  new Schema({
            type: String,
            required: true
        },
-       resetToken: String,
+       resetToken: String, 
        password: {
            type: String,
            required: true
-       },
-       cart : [
-           { 
-            productid: {type: Schema.Types.ObjectId , ref: 'products', required: true},
-            quantity: {type: Number, required: true}
-           }
-        ]
+       }
  })
  
  module.exports = mongoose.model('users', userSchema)
