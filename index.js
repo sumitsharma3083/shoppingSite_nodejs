@@ -6,7 +6,7 @@ const SessionStore      = require('connect-mongodb-session')(session)
 const flash             = require('connect-flash')
 const mongoose          = require('mongoose')
 
-      // Accessing the Route files
+     // Accessing the Route files
       const ShopRoute         = require('./routes/shop')
       const AdminRoute        = require('./routes/admin')
       const authRoute         = require('./routes/auth')
@@ -14,6 +14,7 @@ const mongoose          = require('mongoose')
       const errorController   = require('./controller/shop').getErrorRoute
  
 
+      
          
       //init express
       const app    = express();
@@ -49,7 +50,6 @@ const mongoose          = require('mongoose')
      })
 
         // Routes Middleware
-
         app.use(ShopRoute)
         app.use('/admin',AdminRoute)   
         app.use(authRoute)
@@ -59,7 +59,7 @@ const mongoose          = require('mongoose')
       mongoose.connect('mongodb+srv://sumit:sumit123@cluster0-x042n.mongodb.net/shoppingsite?retryWrites=true')
       .then((result) => {
             console.log("Database connection successful")
-           app.listen(3000)
+            app.listen(3000)
           })
       .catch((err) => {     
             console.log(err)
